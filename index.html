@@ -39,7 +39,7 @@
                             <th>sid</th><th>last name</th><th>first name</th><th>credit hrs</th><th>gpa points</th><th>major</th>
                         </tr>
                         <tr ng-repeat="s in students | filter:search_text">
-                            <td>{{ s.id }}</td>
+                            <td>{{ s.gpa_points }}</td>
                             <td>{{ s.last_name }}</td>
                             <td>{{ s.first_name }}</td>
                             <td>{{ s.credit_hrs }}</td>
