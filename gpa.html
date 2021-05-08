@@ -1,0 +1,46 @@
+<html lang="en-US">
+    <head>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script> 
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+    <style>
+
+    </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Our Website</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="index.html">All Advisees</a></li>
+                        <li class="active"><a href="gpa.html">Grade Point Averages</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="container">
+            <div ng-app = "userApp">     <!-- module  -->
+
+                <div id="main">
+                    <div ng-view></div> <!-- partial pages substituted here -->
+                </div>
+
+            </div>
+
+        </div>
+
+    <script> 
+        document.getElementById('time_loaded').innerHTML = 'Page loaded: ' + new Date().toLocaleTimeString()
+    </script>
+
+</html>
+
