@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script> 
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.js"></script>
     <style>
 
     </style>
@@ -19,7 +20,7 @@
                 <div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="/">All Advisees</a></li>
-                        <li><a href="gpa.html">Grade Point Averages</a></li>
+                        <li><a href="/gpa.html">Grade Point Averages</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +39,7 @@
                             <th>sid</th><th>last name</th><th>first name</th><th>credit hrs</th><th>gpa points</th><th>major</th>
                         </tr>
                         <tr ng-repeat="s in students | filter:search_text">
-                            <td>{{ s.sid }}</td>
+                            <td>{{ s.id }}</td>
                             <td>{{ s.last_name }}</td>
                             <td>{{ s.first_name }}</td>
                             <td>{{ s.credit_hrs }}</td>
@@ -57,13 +58,13 @@
     <script>
         var app = angular.module('userApp', []);
             app.controller('allStudents', function($scope, $http) {
-                    var url = "students.json"
                 
-                    $http.get(url)
-                            .then(function (response) {
-                                        $scope.students = response.data;
-                            });
+                $http.get('students.json')
+                    .then(function (response) {
+                        $scope.students = response.data;
+                });
             });
+
     </script>
 
     </body>
