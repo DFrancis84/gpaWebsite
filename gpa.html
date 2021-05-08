@@ -10,12 +10,12 @@
 
     </style>
     </head>
-    <body>
+    <body ng-app="userApp">
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Our Website</a>
+                    <a class="navbar-brand">Our Website</a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav">
@@ -28,19 +28,42 @@
 
 
         <div class="container">
-            <div ng-app = "userApp">     <!-- module  -->
+            <div ng-controller = "gpaCalc">
+
+                <h2>Advisees</h2>
+                <p><input type='text' ng-model='search_text'> Enter Search text</p>
 
                 <div id="main">
-                    <div ng-view></div> <!-- partial pages substituted here -->
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>sid</th><th>last name</th><th>first name</th><th>gpa</th>
+                        </tr>
+                        <tr ng-repeat="s in students | filter:search_text">
+                            <td>{{ s.id }}</td>
+                            <td>{{ s.last_name }}</td>
+                            <td>{{ s.first_name }}</td>
+                            <td>{{ (s.gpa_points / s.credit_hrs).toFixed(1) }}</td>
+                        </tr>
+                    </table>
                 </div>
 
             </div>
 
         </div>
 
-    <script> 
-        document.getElementById('time_loaded').innerHTML = 'Page loaded: ' + new Date().toLocaleTimeString()
+    </div>
+
+    <script>
+        var app = angular.module('userApp', []);
+            app.controller('gpaCalc', function($scope, $http) {
+                
+                $http.get('students.json')
+                    .then(function (response) {
+                        $scope.students = response.data;
+                });
+            });
+
     </script>
 
+    </body>
 </html>
-
